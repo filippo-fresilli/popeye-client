@@ -116,13 +116,9 @@ class TattoistSignupPage extends Component {
             </label>
 
             <label>
-              <input
-                className="margin-top-20"
-                value={this.state.city}
-                onChange={event => this.genericSync(event)}
-                type="text"
-                name="city"
-                placeholder="City"
+              <LocationSearchInput
+                className="margin-top-20 z-indexplus1 "
+                handleEvent={latLng => this.syncCoordinates(latLng)}
               />
             </label>
 
@@ -145,12 +141,6 @@ class TattoistSignupPage extends Component {
                 type="password"
                 name="confirmPassword"
                 placeholder="Repeat Password"
-              />
-            </label>
-            <label>
-              <LocationSearchInput
-                className="margin-top-20 z-indexplus1 max-width"
-                handleEvent={latLng => this.syncCoordinates(latLng)}
               />
             </label>
 
