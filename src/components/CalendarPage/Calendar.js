@@ -14,10 +14,13 @@ const DragAndDropCalendar = withDragAndDrop(Calendar);
 
 
 class CalendarPage extends Component {
-  state = {
-    events: this.props.appointments
+  constructor(props) {
+    super(props);
+  this.state = {
+    events: this.props.appointments,
+    newEvents: []
   };
-
+  }
   
   
 
@@ -28,19 +31,20 @@ class CalendarPage extends Component {
     const endDate = end;
     if (title){
       const slot = {startDate, endDate, title}
-      axios.post(`${process.env.REACT_APP_API_URL}/eventcreated/${tattoistId}`, slot, {withCredentials: true} )
+      axios.post(`${process.env.REACT_APP_API_URL}/api/eventcreated/${tattoistId}`, slot, {withCredentials: true} )
       .then(response => {
         console.log("pls THEN", response)
+      this.state.events.push()
         this.setState({
-          events: [
-            ...this.state.events,
+          newEvents: [
+            ...this.state.newEvents,
             {
               start: startDate,
               end: endDate,
               title,
             },
           ],
-        })
+        }, ()=> console.log("staaaate", this.state))
       })
       .catch(err => console.log(err))
     }
@@ -49,12 +53,17 @@ class CalendarPage extends Component {
   onSelectEvent(pEvent) {
     const shouldBeRemoved = window.confirm("Would you like to remove this event?")
     if(shouldBeRemoved){
-      
+
       this.setState((prevState, props) => {
-        const events = [...prevState.events]
-        const idx = events.indexOf(pEvent)
-        events.splice(idx, 1);
-        return { events };
+        let concatArrays = this.props.appointments.concat(this.state.newEvents);
+        console.log(concatArrays)
+        const idx = concatArrays.indexOf(pEvent);
+        console.log(idx)
+
+        concatArrays.splice(idx, 1);
+        console.log(concatArrays)
+
+        return { newEvents: concatArrays };
       });
     }
   }
@@ -75,7 +84,7 @@ class CalendarPage extends Component {
           defaultDate={new Date()}
           defaultView="week"
            views= {['month', 'day', 'week']}
-          events={this.props.appointments}
+          events={this.props.appointments.concat(this.state.newEvents)}
           style={{ height: "100vh" }}
           onSelectEvent = {event => this.onSelectEvent(event)}
           onSelectSlot={this.handleSelect}

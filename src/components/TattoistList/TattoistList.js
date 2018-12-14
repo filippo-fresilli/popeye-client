@@ -22,7 +22,7 @@ class TattoistList extends Component {
   componentDidMount() {
     axios
       .post(
-        `${process.env.REACT_APP_API_URL}/tattoistlist`,
+        `${process.env.REACT_APP_API_URL}/api/tattoistlist`,
         this.props.searchedLocation,
         { withCredentials: true }
       )

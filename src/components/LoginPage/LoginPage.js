@@ -29,7 +29,7 @@ class LoginPage extends Component {
   //   };
 
   //   axios
-  //   .post(`${process.env.REACT_APP_API_URL}/google/google-login`, googleInfo, {
+  //   .post(`${process.env.REACT_APP_API_URL}/api/google/google-login`, googleInfo, {
   //     withCredentials: true
   //   })
   //   .then(response => {
@@ -48,7 +48,7 @@ class LoginPage extends Component {
     event.preventDefault();
 
     axios
-      .post(`${process.env.REACT_APP_API_URL}/login`, this.state, {
+      .post(`${process.env.REACT_APP_API_URL}/api/login`, this.state, {
         withCredentials: true
       })
       .then(response => {

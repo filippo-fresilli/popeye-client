@@ -74,7 +74,7 @@ class CustomView extends React.Component {
 
   componentDidMount(){
     const tattoistId = this.props.tattoist._id;
-    axios.get(`${process.env.REACT_APP_API_URL}/appointments/${tattoistId}`, { withCredentials: true })
+    axios.get(`${process.env.REACT_APP_API_URL}/api/appointments/${tattoistId}`, { withCredentials: true })
     .then(response => {
       console.log("HEZHEZ",response.data)
       const appointmentsList = response.data.appointmentsArray.map( oneAppointment => {
@@ -97,7 +97,7 @@ class CustomView extends React.Component {
     const endDate = end;
     if (title){
       const slot = {startDate, endDate, title}
-      axios.post(`${process.env.REACT_APP_API_URL}/eventcreated/${tattoistId}`, slot, {withCredentials: true} )
+      axios.post(`${process.env.REACT_APP_API_URL}/api/eventcreated/${tattoistId}`, slot, {withCredentials: true} )
       .then(response => {
         console.log("response client",response)
         

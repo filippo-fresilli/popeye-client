@@ -42,7 +42,7 @@ class TattoistSignupPage extends Component {
       // make API call
 
       axios
-        .post(`${process.env.REACT_APP_API_URL}/tattoist-signup`, this.state, {
+        .post(`${process.env.REACT_APP_API_URL}/api/tattoist-signup`, this.state, {
           withCredentials: true
         })
         .then(response => {

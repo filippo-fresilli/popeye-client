@@ -22,7 +22,7 @@ class TattoistLoginPage extends Component {
     event.preventDefault();
 
     axios
-      .post(`${process.env.REACT_APP_API_URL}/tattoist-login`, this.state, {
+      .post(`${process.env.REACT_APP_API_URL}/api/tattoist-login`, this.state, {
         withCredentials: true
       })
       .then(response => {

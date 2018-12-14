@@ -15,7 +15,7 @@ class Profile extends Component {
 
   componentWillMount() {
       axios
-        .get(`${process.env.REACT_APP_API_URL}/appointments/${this.props.currentuser._id}`, {
+        .get(`${process.env.REACT_APP_API_URL}/api/appointments/${this.props.currentuser._id}`, {
           withCredentials: true
         })
         .then(response => {
@@ -26,6 +26,23 @@ class Profile extends Component {
           alert("Something wrong with the Tattoist details");
         });
 
+  }
+
+  onSelectEvent(pEvent) {
+    const shouldBeRemoved = window.confirm("Would you like to remove this event?")
+    if(shouldBeRemoved){
+
+      this.setState((prevState, props) => {
+        let concatArrays = this.props.appointments.concat(this.state.newEvents);
+        console.log(concatArrays)
+        const idx = concatArrays.indexOf(pEvent);
+        console.log(idx)
+        concatArrays.splice(idx, 1);
+        console.log(concatArrays)
+
+        return { newEvents: concatArrays };
+      });
+    }
   }
 
   render() {
@@ -48,7 +65,7 @@ class Profile extends Component {
     return (
       <section className="profile-section">
         <h4> hello Tatooist: {fullName}</h4>;
-        <Dnd currentUser={this.props.currentuser} appointments={appointments}  />
+        <Dnd currentUser={this.props.currentuser} appointments={appointments} handleSelect={() => this.onSelectEvent} />
       </section>
     );
   }

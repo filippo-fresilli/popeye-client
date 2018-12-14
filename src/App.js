@@ -42,7 +42,7 @@ class App extends Component {
   // ----------- checkuser------------------------------------
   componentDidMount() {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/checkuser`, {
+      .get(`${process.env.REACT_APP_API_URL}/api/checkuser`, {
         withCredentials: true
       })
       .then(response => {
@@ -52,7 +52,7 @@ class App extends Component {
 
         // ----------- checkTattoist------------------------------------
         axios
-          .get(`${process.env.REACT_APP_API_URL}/checkTattoist`, {
+          .get(`${process.env.REACT_APP_API_URL}/api/checkTattoist`, {
             withCredentials: true
           })
           .then(response => {
@@ -85,7 +85,7 @@ class App extends Component {
 
   logoutClick() {
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/logout`, {
+      .delete(`${process.env.REACT_APP_API_URL}/api/logout`, {
         withCredentials: true
       })
       .then(() => {
@@ -94,7 +94,7 @@ class App extends Component {
 
         //--------------tattoist logout-------------------------------------
         axios
-          .delete(`${process.env.REACT_APP_API_URL}/tattoist-logout`, {
+          .delete(`${process.env.REACT_APP_API_URL}/api/tattoist-logout`, {
             withCredentials: true
           })
           .then(() => {

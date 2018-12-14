@@ -36,7 +36,7 @@ class SignupPage extends Component {
   //   };
 
   //   axios
-  //     .post(`${process.env.REACT_APP_API_URL}/api/google/google-signup`, googleInfo, {
+  //     .post(`${process.env.REACT_APP_API_URL}/api/api/google/google-signup`, googleInfo, {
   //       withCredentials: true
   //     })
   //     .then(response => {
@@ -62,7 +62,7 @@ class SignupPage extends Component {
       // make API call
 
       axios
-        .post(`${process.env.REACT_APP_API_URL}/signup`, this.state, {
+        .post(`${process.env.REACT_APP_API_URL}/api/signup`, this.state, {
           withCredentials: true
         })
         .then(response => {
