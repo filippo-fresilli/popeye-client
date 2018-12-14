@@ -6,42 +6,49 @@ import axios from "axios";
 class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    console.log(this.state);
+    this.state = {
+      appointments : []
+    };
+    
   }
 
 
-  // componentDidMount() {
-  //   if (this.props.currentUser) {
-  //     const { _id } = this.props.currentUser;
-  //     axios
-  //       .get(`${process.env.REACT_APP_API_URL}/tattoist/${_id}`, {
-  //         withCredentials: true
-  //       })
-  //       .then(response => {
-  //         console.log("Tattoist details", response.data);
-  //         const { fullName, adress } = response.data;
-  //         this.setState(
-  //           {
-  //             fullName,
-  //             adress
-  //           },
-  //           () => console.log("blah AFTER API", this.state)
-  //         );
-  //       })
-  //       .catch(err => {
-  //         console.log("Tattoist details", err);
-  //         alert("Something wrong with the Tattoist details");
-  //       });
-  //   }
-  // }
+  componentWillMount() {
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/appointments/${this.props.currentuser._id}`, {
+          withCredentials: true
+        })
+        .then(response => {
+          this.setState({ appointments : response.data })
+        })
+        .catch(err => {
+          console.log("Tattoist details", err);
+          alert("Something wrong with the Tattoist details");
+        });
+
+  }
 
   render() {
     const { fullName } = this.props.currentuser;
+    const {appointments} = this.state;
+    const appointmentsList = appointments.map( oneAppointment => {
+      oneAppointment.start = new Date(oneAppointment.startDate);
+      oneAppointment.end = new Date(oneAppointment.endDate);
+      return oneAppointment 
+    })
+
+    // appointmentsList.forEach(oneApp => {
+    //   delete oneApp._id
+    //   delete oneApp.startDate
+    //   delete oneApp.endDate
+    // })
+
+    console.log(appointmentsList)
+
     return (
       <section className="profile-section">
         <h4> hello Tatooist: {fullName}</h4>;
-        <Dnd currentUser={this.props.currentuser} />
+        <Dnd currentUser={this.props.currentuser} appointments={appointments}  />
       </section>
     );
   }

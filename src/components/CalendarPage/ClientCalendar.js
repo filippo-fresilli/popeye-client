@@ -82,6 +82,7 @@ class CustomView extends React.Component {
         oneAppointment.end = new Date(oneAppointment.endDate);
         return oneAppointment 
       })
+
       console.log("my appointment list",appointmentsList)
       this.setState({events: appointmentsList})
     })
@@ -133,6 +134,8 @@ class CustomView extends React.Component {
 
   render() {
     //console.log("STATE CLIENT CALENDAR",this.state)
+
+
 
     const localizer = BigCalendar.momentLocalizer(moment);// or globalizeLocalizer
     return ( 

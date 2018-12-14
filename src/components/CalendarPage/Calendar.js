@@ -15,9 +15,9 @@ const DragAndDropCalendar = withDragAndDrop(Calendar);
 
 class CalendarPage extends Component {
   state = {
-    events: [
-    ]
+    events: this.props.appointments
   };
+
   
   
 
@@ -61,62 +61,10 @@ class CalendarPage extends Component {
 
   
 
-  // moveEvent({ event, startDate, endDate, isAllDay: droppedOnAllDaySlot }) {
-  //   const { events } = this.state
-
-  //   const idx = events.indexOf(event)
-  //   let allDay = event.allDay
-
-  //   if (!event.allDay && droppedOnAllDaySlot) {
-  //     allDay = true
-  //   } else if (event.allDay && !droppedOnAllDaySlot) {
-  //     allDay = false
-  //   }
-
-  //   const updatedEvent = { ...event, startDate, endDate, allDay }
-
-  //   const nextEvents = [...events]
-  //   nextEvents.splice(idx, 1, updatedEvent)
-
-  //   this.setState({
-  //     events: nextEvents,
-  //   })
-
-  //   alert(`${event.title} was dropped onto ${updatedEvent.startDate}`)
-  // }
-
-  // resizeEvent = ({ event, startDate, endDate }) => {
-  //   const { events } = this.state
-
-  //   const nextEvents = events.map(existingEvent => {
-  //     return existingEvent.id == event.id
-  //       ? { ...existingEvent, startDate, endDate }
-  //       : existingEvent
-  //   })
-
-  //   this.setState({
-  //     events: nextEvents,
-  //   })
-
-  //   alert(`${event.title} was resized to ${startDate}-${end}`)
-  // }
-
-  // newEvent(event) {
-  //   let idList = this.state.events.map(a => a.id)
-  //   let newId = Math.max(...idList) + 1
-  //   let hour = {
-  //     id: newId,
-  //     title: 'New Event',
-  //     allDay: event.slots.length == 1,
-  //     startDate: event.startDate,
-  //     endDate: event.end,
-  //   }
-  //   this.setState({
-  //     events: this.state.events.concat([hour]),
-  //   })
-  // }
+  
 
   render() {
+
     return (
       <div className="App">
         <Calendar
@@ -127,7 +75,7 @@ class CalendarPage extends Component {
           defaultDate={new Date()}
           defaultView="week"
            views= {['month', 'day', 'week']}
-          events={this.state.events}
+          events={this.props.appointments}
           style={{ height: "100vh" }}
           onSelectEvent = {event => this.onSelectEvent(event)}
           onSelectSlot={this.handleSelect}
