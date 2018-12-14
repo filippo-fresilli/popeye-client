@@ -113,8 +113,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <div className="App">
+      <div className="App">
+        <div>
           {this.props.location.pathname !== "/login-page" &&
             this.props.location.pathname !== "/tattoist-login-page" && (
               <nav className="navbar-user-dropdown flex">
@@ -129,6 +129,7 @@ class App extends Component {
                       to="/tattoist-profile"
                     >
                       {this.state.currentUser.fullName}
+                      {this.state.currentUser.name}
                     </NavLink>
 
                     <p className="padding-l-r-14 font-size-20px">

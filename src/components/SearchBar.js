@@ -58,7 +58,7 @@ class LocationSearchInput extends React.Component {
                   value={this.state.inputValue}
                   onChange={event => this.handleChange(event)}
                   {...getInputProps({
-                    placeholder: "Search Places ...",
+                    placeholder: "Choose city ...",
                     className: ""
                   })}
                 />
