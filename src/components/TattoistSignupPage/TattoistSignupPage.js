@@ -72,7 +72,12 @@ class TattoistSignupPage extends Component {
       <section className="TattoistSignupPage">
         <div className="signup-div">
           <h2>Create a Tattoist Account</h2>
-
+          <p className="">
+            <NavLink className="" to="/tattoist-login-page">
+              Log In
+            </NavLink>{" "}
+            as Tattoist
+          </p>
           <form
             className="signup-form pad-40"
             onSubmit={event => this.handleSubmit(event)}
@@ -153,7 +158,6 @@ class TattoistSignupPage extends Component {
               <p>Sign Up</p>
             </button>
           </form>
-
           <p>
             <NavLink to="/signup-page"> Sign Up</NavLink> as a Client
           </p>

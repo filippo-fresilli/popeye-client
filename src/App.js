@@ -121,18 +121,21 @@ class App extends Component {
                 <NavLink exact to="/">
                   <img src="/images/logo-header.svg" alt="logo" />
                 </NavLink>
-                <NavLink exact to="/tattoist-profile">
-                  profile page
-                </NavLink>
 
                 {this.state.currentUser ? (
                   <span className="flex">
-                    <p className="padding-l-r-14">
-                      {this.state.currentUser.name}
+                    <NavLink
+                      className="white padding-l-r-14 extra-style font-size-20px"
+                      to="/tattoist-profile"
+                    >
+                      {this.state.currentUser.fullName}
+                    </NavLink>
+
+                    <p className="padding-l-r-14 font-size-20px">
+                      Appointments
                     </p>
-                    <p className="padding-l-r-14">Appointments</p>
                     <button
-                      className="extra-style"
+                      className="extra-style font-size-20px"
                       onClick={() => this.logoutClick()}
                     >
                       Log Out
@@ -145,14 +148,14 @@ class App extends Component {
                       this.props.location.pathname !== "/signup-page" && (
                         <div className="flex">
                           <NavLink
-                            className="white extra-style"
+                            className="white extra-style font-size-20px"
                             to="/signup-page"
                           >
                             For Clients
                           </NavLink>
 
                           <NavLink
-                            className="white extra-style"
+                            className="white extra-style font-size-20px"
                             to="/tattoist-signup-page"
                           >
                             For Tattoist
@@ -160,7 +163,7 @@ class App extends Component {
                         </div>
                       )}
 
-                    {this.props.location.pathname !== "/tattoist-signup-page" &&
+                    {/* {this.props.location.pathname !== "/tattoist-signup-page" &&
                       this.props.location.pathname !== "/" && (
                         <p className="white extra-style">
                           <NavLink
@@ -171,9 +174,9 @@ class App extends Component {
                           </NavLink>
                           as a Client
                         </p>
-                      )}
+                      )} */}
 
-                    {this.props.location.pathname !== "/signup-page" &&
+                    {/* {this.props.location.pathname !== "/signup-page" &&
                       this.props.location.pathname !== "/" && (
                         <p className="white extra-style">
                           <NavLink
@@ -184,7 +187,7 @@ class App extends Component {
                           </NavLink>{" "}
                           as Tattoist
                         </p>
-                      )}
+                      )} */}
                   </span>
                 )}
               </nav>
@@ -316,7 +319,10 @@ class App extends Component {
         </div>
 
         {/* --------------------------- footer ------------------------- */}
-        <footer>Made with ❤️ and bugs at IRONHACK</footer>
+        {this.props.location.pathname !== "/tattoist-login-page" &&
+          this.props.location.pathname !== "/login-page" && (
+            <footer>Made with ❤️ and bugs at IRONHACK</footer>
+          )}
       </div>
     );
   }
