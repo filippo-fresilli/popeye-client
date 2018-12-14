@@ -132,9 +132,7 @@ class App extends Component {
                       {this.state.currentUser.name}
                     </NavLink>
 
-                    <p className="padding-l-r-14 font-size-20px">
-                      Appointments
-                    </p>
+                    
                     <button
                       className="extra-style font-size-20px"
                       onClick={() => this.logoutClick()}
