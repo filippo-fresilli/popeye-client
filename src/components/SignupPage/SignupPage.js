@@ -17,7 +17,7 @@ class SignupPage extends Component {
       confirmPassword: "",
       phoneNumber: "",
       currentUser: null,
-      redirect: false
+      redirect: false,
     };
   }
 

@@ -249,7 +249,7 @@ class App extends Component {
               path="/signup-page"
               render={() => (
                 <SignupPage
-                  currentuser={this.state.currentUser}
+                  currentUser={this.state.currentUser}
                   onUserChange={userDoc => this.syncCurrentUser(userDoc)}
                 />
               )}
@@ -259,7 +259,7 @@ class App extends Component {
               path="/tattoist-signup-page"
               render={() => (
                 <TattoistSignupPage
-                  currentuser={this.state.currentUser}
+                  currentUser={this.state.currentUser}
                   onUserChange={userDoc => this.syncCurrentUser(userDoc)}
                 />
               )}
